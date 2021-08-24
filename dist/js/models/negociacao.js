@@ -1,19 +1,22 @@
 export class Negociacao {
-    constructor(data, quantidade, valor) {
-        this._data = data;
-        this._quantidade = quantidade;
-        this._valor = valor;
+    constructor(_data, quantidade, valor) {
+        this._data = _data;
+        this.quantidade = quantidade;
+        this.valor = valor;
     }
     get data() {
-        return this._data;
-    }
-    get quantidade() {
-        return this._quantidade;
-    }
-    get valor() {
-        return this._valor;
+        const data = new Date(this._data.getTime());
+        return data;
     }
     get volume() {
-        return this._quantidade * this._valor;
+        return this.quantidade * this.valor;
     }
 }
+/*
+metodo get para data p/ evitar mutações no objeto Date. Dessa forma, é retornada uma copia da data inputada
+*/
+/*
+não é necessário setar os atributos da classe, isso pode ser feito direto no construtor.
+
+atributo da classe com readonly não necessita dos getters. Atribuição de valores só via construtor
+*/ 
